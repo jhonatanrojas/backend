@@ -34,34 +34,8 @@ module.exports = {
      return characters;
    }
    
-    /* if(family || pluckName){
-
-      
-      
-      
-      
-    let resultado= characters.filter(name => {
-        if(name.family === family){
-          return name.name
-        }
-      })
-
-      console.log(resultado[0].name)
-
-       return resultado[0].name;
-
-    }*/
-    
   
-
-
-    
-
-    
- 
   
-
-
   },
  
   addFamily: function (name) {
@@ -128,8 +102,17 @@ module.exports = {
     
     let season = false
 
-    if(name && quote.text !== {}) array.push({text: quote.text ,season })
-      else if(array[0] === {}) return array = []
+
+    if(name && quote.text !== '' && quote.text !== undefined){
+      if(quote.season)
+          season=quote.season; 
+
+
+      array.push({text: quote.text ,season })
+      console.log(array)
+
+    }
+      else  return  [];
 
 
 
