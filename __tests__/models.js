@@ -91,13 +91,13 @@ describe('Model', function() {
       expect(Model.listCharacter('Gorgory')[0].name).toEqual("Rafa");
     });
 
-    xit('Si recibe un segundo parámetro en true debe devolver únicamente los nombres de los personajes', function() {
+    it('Si recibe un segundo parámetro en true debe devolver únicamente los nombres de los personajes', function() {
       Model.addFamily('Simpsons');
       Model.addFamily('Gorgory');
       Model.addCharacter('Homero', 36, "Simpsons");
       Model.addCharacter('Bart', 10, "Simpsons");
       Model.addCharacter('Rafa', 10, "Gorgory");
-      expect(Model.listCharacter('Simpsons', true)).toHaveLength(2);
+      expect(Model.listCharacter('Simpsons', true)).toHaveLength(2); //[Homero, Bart]
       expect(Model.listCharacter('Simpsons', true)[0]).toEqual("Homero");
       expect(Model.listCharacter('Simpsons', true)[1]).toEqual("Bart");
       expect(Model.listCharacter('Gorgory', true)).toHaveLength(1);
@@ -106,13 +106,13 @@ describe('Model', function() {
   });
 
   describe('`showQuotes` y `addQuote`', function() {
-    it('Inicialmente devuelve un arreglo vacío', function() {
+    xit('Inicialmente devuelve un arreglo vacío', function() {
       Model.addFamily('Simpsons');
       Model.addCharacter('Homero', 36, "Simpsons");
       expect(Model.showQuotes('Homero')).toEqual([]);
     });
 
-    it('Agrega una frase al personaje', function() {
+    xit('Agrega una frase al personaje', function() {
       Model.addFamily('Simpsons');
       Model.addCharacter('Homero', 36, "Simpsons");
       Model.addQuote('Homero', {text: 'Que no panda el cunico'});
@@ -123,7 +123,7 @@ describe('Model', function() {
       expect(Model.showQuotes('Homero')[1].text).toEqual('Soy intelectual, muy inteligente');
     });
 
-    it('Si no se le pasa texto o es un string vacio no se agrega la frase al personaje', function() {
+    xit('Si no se le pasa texto o es un string vacio no se agrega la frase al personaje', function() {
       Model.addFamily('Simpsons');
       Model.addCharacter('Homero', 36, "Simpsons");
       Model.addQuote('Homero', {});
@@ -132,14 +132,14 @@ describe('Model', function() {
       expect(Model.showQuotes('Homero')).toHaveLength(0);
     });
 
-    it('Devuelve un arreglo vacío si el personaje no existe', function() {
+    xit('Devuelve un arreglo vacío si el personaje no existe', function() {
       Model.addFamily('Simpsons');
       Model.addCharacter('Homero', 36, "Simpsons");
       Model.addQuote('Homero', {text: 'Que no panda el cunico'});
       expect(Model.showQuotes('Bart')).toHaveLength(0);
     });
 
-    it('Setea la temporada de la frase y si no es especificada se coloca en false', function() {
+    xit('Setea la temporada de la frase y si no es especificada se coloca en false', function() {
       Model.addFamily('Simpsons');
       Model.addCharacter('Homero', 36, "Simpsons");
       Model.addQuote('Homero', {text: 'Que no panda el cunico', season: 14});

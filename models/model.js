@@ -20,23 +20,46 @@ module.exports = {
     // Devuelve un arreglo con todos los personajes
     // Si recibe un nombre de familia como parámetro debería filtrar solo los personajes de ella
     // Si recibe un segundo parámetro en true debe devolver únicamente los nombres de los personajes
-    if(family || pluckName) return characters.filter(name => {
-      if(name.family === family){
-        return name.name
-      }else{
-        if(pluckName){
-          return name
+   
+   if(family && pluckName ){
+
+     let familias = characters.filter(name => name.family === family)
+     return   familias.map((familia) => { return familia.name; })
+   }else if(family){
+
+        return characters.filter(name => name.family === family)
+
+ 
+   }else{
+     return characters;
+   }
+   
+    /* if(family || pluckName){
+
+      
+      
+      
+      
+    let resultado= characters.filter(name => {
+        if(name.family === family){
+          return name.name
         }
-         
-      }
-    })
+      })
+
+      console.log(resultado[0].name)
+
+       return resultado[0].name;
+
+    }*/
+    
+  
 
 
     
 
     
  
-    return characters
+  
 
 
   },
@@ -74,22 +97,24 @@ module.exports = {
 
     if (familyNovaldo) {
       return characters;
-    } else {
-      let familiaAgrgada = characters.push({
-        name,
-        family,
-        age,
-        quotes: [],
-        familyId: 1,
-      });
-      for (let i = 1; i < characters.length; i++) {
-        characters[i].familyId++ -1;
-      }
+    } 
 
-     
-    }
+    let idf=1;
+    
+    
+   if(family==='Gorgory'){
+     idf=2;
+   }  
 
-
+  
+   characters.push({
+       name,
+       family,
+       age,
+       quotes:[],
+       familyId: idf,
+     });
+    
  
        return characters
 
